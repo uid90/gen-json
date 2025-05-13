@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Generador de JSON</title>
+  <style>
+    body { font-family: sans-serif; max-width: 600px; margin: 20px auto; padding: 20px; }
+    input, textarea { width: 100%; margin: 5px 0 15px; padding: 8px; }
+    button { padding: 10px 20px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h2>Generador de JSON para juegos</h2>
+
+  <label>Título:</label>
+  <input type="text" id="title" />
+
+  <label>Enlace:</label>
+  <input type="text" id="link" />
+
+  <label>Imagen principal (URL):</label>
+  <input type="text" id="image" />
+
+  <label>Etiqueta (Tag):</label>
+  <input type="text" id="tag" />
+
+  <label>Descripción:</label>
+  <input type="text" id="desc" />
+
+  <label>Información (Ej: tamaño y versión):</label>
+  <input type="text" id="info" />
+
+  <label>Imagen 1 (URL):</label>
+  <input type="text" id="img1" />
+
+  <label>Imagen 2 (URL):</label>
+  <input type="text" id="img2" />
+
+  <label>Imagen 3 (URL):</label>
+  <input type="text" id="img3" />
+
+  <label>Link de descarga:</label>
+  <input type="text" id="linkdw" />
+
+  <button onclick="generarJSON()">Generar JSON</button>
+  <button onclick="copiarJSON()">Copiar JSON</button>
+
+  <h3>Resultado:</h3>
+  <textarea id="output" rows="15" readonly></textarea>
+
+  <script>
+    function generarJSON() {
+      const json = {
+        title: document.getElementById("title").value,
+        link: document.getElementById("link").value,
+        image: document.getElementById("image").value,
+        tag: document.getElementById("tag").value,
+        desc: document.getElementById("desc").value,
+        info: document.getElementById("info").value,
+        img1: document.getElementById("img1").value,
+        img2: document.getElementById("img2").value,
+        img3: document.getElementById("img3").value,
+        linkdw: document.getElementById("linkdw").value
+      };
+      document.getElementById("output").value = JSON.stringify(json, null, 2);
+    }
+
+    function copiarJSON() {
+      const output = document.getElementById("output");
+      output.select();
+      document.execCommand("copy");
+      alert("JSON copiado al portapapeles");
+    }
+  </script>
+</body>
+</html>
