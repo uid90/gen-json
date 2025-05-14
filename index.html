@@ -15,8 +15,8 @@
   <label>Título:</label>
   <input type="text" id="title" />
 
-  <label>Enlace:</label>
-  <input type="text" id="link" />
+  <label>Nombre de archivo (para el enlace .html):</label>
+  <input type="text" id="filename" placeholder="Ej: AA" />
 
   <label>Imagen principal (URL):</label>
   <input type="text" id="image" />
@@ -27,8 +27,11 @@
   <label>Descripción:</label>
   <input type="text" id="desc" />
 
-  <label>Información (Ej: tamaño y versión):</label>
-  <input type="text" id="info" />
+  <label>Tamaño del archivo (Ej: 1.34 GB):</label>
+  <input type="text" id="size" />
+
+  <label>Versión:</label>
+  <input type="text" id="version" />
 
   <label>Imagen 1 (URL):</label>
   <input type="text" id="img1" />
@@ -50,13 +53,17 @@
 
   <script>
     function generarJSON() {
+      const filename = document.getElementById("filename").value.trim();
+      const size = document.getElementById("size").value.trim();
+      const version = document.getElementById("version").value.trim();
+
       const json = {
         title: document.getElementById("title").value,
-        link: document.getElementById("link").value,
+        link: `../JUEGOS/${filename}.html`,
         image: document.getElementById("image").value,
         tag: document.getElementById("tag").value,
         desc: document.getElementById("desc").value,
-        info: document.getElementById("info").value,
+        info: `${size} | Versión ${version}`,
         img1: document.getElementById("img1").value,
         img2: document.getElementById("img2").value,
         img3: document.getElementById("img3").value,
